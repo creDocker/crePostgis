@@ -1,11 +1,11 @@
 # Adapted from mdillon/postgis:9.5
 # and https://github.com/docker-library/postgres/blob/master/9.5/docker-entrypoint.sh
-FROM tamboraorg/crepostgres:2016.0
+FROM tamboraorg/crepostgres:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2016
+ARG BUILD_YEAR=2020
 ARG BUILD_MONTH=0
-ARG BUILD_TAG=2016.0
+ARG BUILD_TAG=0.2020
 
 #ENV POSTGIS_MAJOR 2.5
 #ENV POSTGIS_MAJOR 2.3

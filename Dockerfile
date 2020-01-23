@@ -1,10 +1,11 @@
 # Adapted from mdillon/postgis:9.5
 # and https://github.com/docker-library/postgres/blob/master/9.5/docker-entrypoint.sh
-FROM tamboraorg/crepostgres:0.2020
+FROM tamboraorg/crepostgres:2018.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 #ENV POSTGIS_MAJOR 2.5
 #ENV POSTGIS_MAJOR 2.3
@@ -14,6 +15,14 @@ ENV POSTGIS_MAJOR 2.4
 #ENV POSTGIS_VERSION 2.5.1
 #ENV POSTGIS_VERSION 2.3.2 
 ENV POSTGIS_VERSION 2.4.2 
+
+LABEL Name="PostGIS for CRE" \
+      CRE=$CRE_VERSION \ 
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$POSTGIS_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$BUILD_TAG 
 
 USER root
 
