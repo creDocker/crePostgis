@@ -1,6 +1,6 @@
 # Adapted from mdillon/postgis:9.5
 # and https://github.com/docker-library/postgres/blob/master/9.5/docker-entrypoint.sh
-FROM tamboraorg/crepostgres:2018.0
+FROM tamboraorg/crepostgres:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ARG BUILD_YEAR=2018
