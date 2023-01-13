@@ -36,6 +36,9 @@ RUN apt-get install -y --no-install-recommends \
            postgis 
 RUN rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t crePostgis \t $POSTGIS_MAJOR : $POSTGIS_VERSION" >> /cre/versions.txt
+
 COPY cre /cre
 WORKDIR /cre/
 RUN chown -R postgres.postgres /cre 

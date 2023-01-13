@@ -8,7 +8,7 @@ ARG BUILD_MONTH=0
 ARG BUILD_TAG=0.2022
 
 ENV POSTGIS_MAJOR 3
-ENV POSTGIS_VERSION 3.0.0 
+ENV POSTGIS_VERSION 3.3.2 
 
 LABEL Name="Postgis for CRE" \
       CRE=$CRE_VERSION \ 
@@ -35,6 +35,9 @@ RUN apt-get install -y --no-install-recommends \
 RUN apt-get install -y --no-install-recommends \
            postgis 
 RUN rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t crePostgis \t $POSTGIS_MAJOR : $POSTGIS_VERSION" >> /cre/versions.txt
 
 COPY cre /cre
 WORKDIR /cre/
