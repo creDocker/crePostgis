@@ -5,3 +5,4 @@ creBuild 	 2023.01
   Python3 	 Python 3.10.6
  crePostgres 	 postgres (PostgreSQL) 14.6 (Ubuntu 14.6-0ubuntu0.22.04.1)
   psql 	 psql (PostgreSQL) 14.6 (Ubuntu 14.6-0ubuntu0.22.04.1)
+ crePostgis 	 3 : 3.3.2
