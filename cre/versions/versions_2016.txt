@@ -6,4 +6,4 @@ creBuild 	 2023.01
  crePostgres 	 postgres (PostgreSQL) 9.5.25
   psql 	 psql (PostgreSQL) 9.5.25
  crePostgis 	 2.4 : 2.4.2
-  postgis 	 -rw-r--r--  1 root root  135045 May 15  2019 postgis--unpackaged--2.4.2.sql
+  postgis 	 2.4.2
