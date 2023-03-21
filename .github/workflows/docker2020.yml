@@ -34,12 +34,12 @@ jobs:
         with:
           file: ./Dockerfile20
           push: true
-          tags: tamboraorg/crepostgis:check20 
+          tags: credocker/crepostgis:check20 
 
       -
         name: Test
         run: |
-          docker run tamboraorg/crepostgis:check20 /cre/postgis-test.sh   
+          docker run credocker/crepostgis:check20 /cre/postgis-test.sh   
 
       -
         name: Build and push
@@ -48,6 +48,6 @@ jobs:
         with:
           file: ./Dockerfile20
           push: true
-          tags: tamboraorg/crepostgis:2020.0, tamboraorg/crepostgis:latest 
+          tags: credocker/crepostgis:2020.0, credocker/crepostgis:latest 
       
 
