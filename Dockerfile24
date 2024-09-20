@@ -1,0 +1,51 @@
+# Adapted from mdillon/postgis:9.5 
+# and https://github.com/docker-library/postgres/blob/master/9.5/docker-entrypoint.sh
+FROM credocker/crepostgres:2024.0
+MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
+
+ARG BUILD_YEAR=2024
+ARG BUILD_MONTH=0
+ARG BUILD_TAG=2024.0
+
+ENV POSTGIS_MAJOR 3
+ENV POSTGIS_VERSION 3.4.2 
+
+LABEL Name="Postgis for CRE" \
+      CRE=$CRE_VERSION \ 
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$POSTGIS_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$BUILD_TAG 
+
+
+USER root
+
+#RUN add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
+##RUN add-apt-repository ppa:ubuntugis/ppa
+
+RUN apt-get update 
+
+RUN apt-get install -y --no-install-recommends \
+           postgresql-$POSTGRES_VERSION-postgis-$POSTGIS_MAJOR 
+#RUN apt-get install -y --no-install-recommends \
+#           postgresql-$POSTGRES_VERSION-postgis-$POSTGIS_MAJOR-scripts 
+RUN apt-get install -y --no-install-recommends \
+           postgresql-$POSTGRES_VERSION-postgis-scripts 
+RUN apt-get install -y --no-install-recommends \
+           postgis 
+RUN rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t crePostgis \t $POSTGIS_MAJOR : $POSTGIS_VERSION" >> /cre/versions.txt&& \
+    echo "$(date +'%F %R') \t  postgis \t $(ls /usr/share/postgresql/${POSTGRES_VERSION}/extension/ | grep 'postgis--unpackaged--'| sed -e 's|postgis--unpackaged--||' -e 's|.sql||')" >> /cre/versions.txt  
+
+COPY cre /cre
+WORKDIR /cre/
+RUN chown -R postgres.postgres /cre 
+
+USER postgres
+
+#RUN mkdir -p /docker-entrypoint-initdb.d
+#COPY ./initdb-postgis.sh /docker-entrypoint-initdb.d/postgis.sh
+#COPY ./update-postgis.sh /usr/local/bin
