@@ -5,3 +5,16 @@ Todo:
 =====
 available Versions are here:  /usr/share/postgresql/$POSTGRES_VERSION/extension/
 * Install more extensions (as i.e. needed for regmod)
+
+
+import:
+https://www.google.de/m?q=postgis+import+shapefiles&client=ms-opera-mobile&channel=new&espv=1
+shp2pgsql
+https://gis.stackexchange.com/questions/41799/adding-shapefiles-to-postgis-database
+http://www.bostongis.com/pgsql2shp_shp2pgsql_quickguide.bqg
+http://www.bostongis.com/
+
+
+https://autogis-site.readthedocs.io/en/latest/course-info/general-information.html
+https://autogis-site.readthedocs.io/en/latest/
+https://geo-python-site.readthedocs.io/en/latest/
