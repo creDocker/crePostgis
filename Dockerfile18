@@ -31,8 +31,11 @@ RUN add-apt-repository ppa:ubuntugis/ppa
 
 #RUN add-apt-repository universe; apt update; apt install libgdal20 
 RUN apt-get install -y gdal-bin
+RUN apt-get install -y libgdal26
 
 RUN apt-get update 
+
+RUN apt-get install -y postgresql-$POSTGRES_VERSION-postgis-$POSTGIS_MAJOR 
 
 RUN apt-get install -y --no-install-recommends \
            postgresql-$POSTGRES_VERSION-postgis-$POSTGIS_MAJOR 
